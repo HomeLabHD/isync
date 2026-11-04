@@ -3,8 +3,10 @@
 [isync](https://isync.sourceforge.io/), the project behind the `mbsync` command, in a small rootless image: two-way synchronization between two IMAP servers, or an IMAP server and a local Maildir. It keeps state between runs, so moves, flags and deletions on either side reach the other.
 
 <!-- sf:project:start -->
+[![GitHub](https://img.shields.io/badge/GitHub-mirror-181717?logo=github)](https://github.com/HomeLabHD/isync) [![GitLab](https://img.shields.io/badge/GitLab-source-FC6D26?logo=gitlab)](https://git.optcp.com/HomeLabHD/isync) [![license](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/license.svg)](https://github.com/HomeLabHD/isync/blob/main/LICENSE) [![Open Issues](https://img.shields.io/github/issues/HomeLabHD/isync)](https://github.com/HomeLabHD/isync/issues) [![Open PRs](https://img.shields.io/github/issues-pr/HomeLabHD/isync)](https://github.com/HomeLabHD/isync/pulls) [![Contributors](https://img.shields.io/github/contributors/HomeLabHD/isync)](https://github.com/HomeLabHD/isync/graphs/contributors) [![donate](https://img.shields.io/badge/donate-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/T6T41IT163) [![sponsor](https://img.shields.io/badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/HomeLabHD)
 <!-- sf:project:end -->
 <!-- sf:badges:start -->
+[![release](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/release.svg)](https://github.com/HomeLabHD/isync/releases) [![build](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/build.svg)](https://git.optcp.com/HomeLabHD/isync/-/pipelines) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/isync)](https://github.com/HomeLabHD/isync/commits) [![StageFreight](https://img.shields.io/badge/StageFreight-0.14.0--dev+c29e4c7-310937?logo=readthedocs&logoColor=white)](https://stagefreight.prplanit.com)
 <!-- sf:badges:end -->
 
 ### Usage
