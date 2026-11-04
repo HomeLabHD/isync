@@ -8,26 +8,8 @@
 <!-- sf:badges:start -->
 [![release](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/release.svg)](https://github.com/HomeLabHD/isync/releases) [![build](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/build.svg)](https://git.optcp.com/HomeLabHD/isync/-/pipelines) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/isync)](https://github.com/HomeLabHD/isync/commits) [![StageFreight](https://img.shields.io/badge/StageFreight-0.14.0--dev+03e43e86-310937?logo=readthedocs&logoColor=white)](https://stagefreight.prplanit.com)
 <!-- sf:badges:end -->
-<!-- sf:image:start -->
-[![GHCR](https://img.shields.io/badge/GHCR-homelabhd%2Fisync-181717?logo=github&logoColor=white)](https://github.com/HomeLabHD/isync/pkgs/container/isync) [![Docker](https://img.shields.io/badge/Docker-hlhd%2Fisync-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/isync) [![pulls](https://img.shields.io/docker/pulls/hlhd/isync?color=1d63ed&logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/isync) [![Harbor](https://img.shields.io/badge/Harbor-hlhd%2Fisync-60b932)](https://cr.optcp.com/harbor/projects)
 
-[![latest](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/release-latest.svg)](https://github.com/HomeLabHD/isync/pkgs/container/isync) ![updated](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/release-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/release-size.svg)](https://github.com/HomeLabHD/isync/pkgs/container/isync) [![latest-dev](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/dev-latest.svg)](https://github.com/HomeLabHD/isync/pkgs/container/isync) ![updated](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/dev-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/isync/main/.stagefreight/scribe/dev-size.svg)](https://github.com/HomeLabHD/isync/pkgs/container/isync)
-<!-- sf:image:end -->
-
----
-
-### Features:
-
-| | |
-| --- | --- |
-| **Two-way sync** | New mail, moves, flags and deletions on either side reach the other |
-| **Kept state** | Sync state lives in `/var/lib/mbsync` between runs, so a deletion is never mistaken for new mail |
-| **Rootless** | Runs as UID 65532, or any UID in group 0, on a read-only root filesystem |
-| **No secrets in config** | Passwords are read from mounted files at run time with `PassCmd` |
-| **TLS** | TLS 1.2 and 1.3 only, certificates verified |
-| **Tini init** | Signal handling and zombie reaping via tini |
-
-## Usage
+### Usage
 
 The image runs `mbsync` (Alpine, isync 1.5.1) as UID 65532 and accepts any UID in group 0, with a read-only root filesystem. Mount a config and a writable state directory, and let the platform schedule it (a Kubernetes CronJob or a systemd timer); nothing in the image runs on a timer. Arguments starting with `-` go to `mbsync`; any other command (`sh`, a script) runs as given.
 
@@ -41,6 +23,7 @@ docker run --rm --read-only \
 
 - `/var/lib/mbsync`: sync state. Keep it between runs; without it the next run cannot tell a deletion from a new message.
 - Passwords come from files at run time, never from the config: `PassCmd "cat /run/secrets/<name>"`.
+- TLS 1.2 and 1.3 only, certificates verified.
 
 Two-way sync between two IMAP servers, here a Gmail account and a self-hosted mailbox:
 
@@ -79,28 +62,6 @@ CopyArrivalDate yes
 SyncState /var/lib/mbsync/
 ```
 
-## Image Contents
+### License
 
-<!-- sf:contents-base:start -->
-[![alpine 3.22.7](https://img.shields.io/badge/alpine-3.22.7-0078D4?style=flat)](https://hub.docker.com/_/alpine)
-<!-- sf:contents-base:end -->
-
-<!-- sf:contents-apk:start -->
-[![ca-certificates](https://img.shields.io/badge/ca--certificates-555?style=flat)](https://pkgs.alpinelinux.org/packages?name=ca-certificates) [![isync 1.5.1](https://img.shields.io/badge/isync-1.5.1-0078D4?style=flat)](https://pkgs.alpinelinux.org/packages?name=isync) [![tini](https://img.shields.io/badge/tini-555?style=flat)](https://pkgs.alpinelinux.org/packages?name=tini)
-<!-- sf:contents-apk:end -->
-
----
-
-## Contributing
-
-- Fork the repository
-- Submit Pull Requests / Merge Requests
-- [File issues](../../issues/new) with the image tag, run command and the mbsync output
-
-## Credits
-
-* [isync](https://isync.sourceforge.io/) by Oswald Buddenhagen and its contributors: the `mbsync` tool this image runs — [source](https://sourceforge.net/projects/isync/) · [GPL-2.0-or-later](LICENSE)
-
-## License
-
-isync is distributed under the [GPL-2.0-or-later](LICENSE) license; this packaging follows it.
+isync is GPL-2.0-or-later; this packaging follows it.
