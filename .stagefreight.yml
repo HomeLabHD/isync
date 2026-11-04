@@ -1,0 +1,90 @@
+# ------------------------------------------------------------------------------
+# GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
+# Source repo: PrPlanIT/MaintenancePolicy
+# Profile: hlhd-docker
+# This .stagefreight.yml is governed, not purely local.
+# To disable governance, detach from the control repo workflow.
+# Manual changes may be overwritten by reconciliation.
+# ------------------------------------------------------------------------------
+
+version: 1
+builds:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/build-docker.yml
+scribe:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/scribe-docker.yml
+lint:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/lint-generic.yml
+security:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/security.yml
+dependency:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/dependency.yml
+commit:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/commit.yml
+release:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/release.yml
+manifest:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/manifest.yml
+build_cache:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/build_cache.yml
+ci:
+  forge:
+    - gitlab
+  image: docker.cr.optcp.com/prplanit/stagefreight:latest-dev
+forges:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/forges.yml
+git:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/git.yml
+metadata:
+  category: utilities
+  description:
+    - Two-way IMAP mailbox synchronization (mbsync), rootless.
+    - 'A 5 MB Alpine image running mbsync from the isync project: keeps two IMAP servers, or IMAP and Maildir, in sync in both directions with state kept between runs, as any UID on a read-only filesystem.'
+  license: GPL-2.0-or-later
+  org: HomeLabHD
+  title: isync
+  topics:
+    - isync
+    - mbsync
+    - imap
+    - email
+    - sync
+orgs:
+  HomeLabHD:
+    aliases:
+      docker: hlhd
+      ghcr: homelabhd
+      github: HomeLabHD
+      handle: hlhd
+    maintainer: HomeLabHD <homelabhelp@gmail.com>
+publish:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/publish-docker.yml
+registries:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/registries.yml
+repos:
+  github-mirror:
+    forge: github
+    project: HomeLabHD/isync
+    roles:
+      - mirror
+      - publish-origin
+    sync:
+      git: true
+      releases: true
+  primary:
+    branches:
+      default: main
+    forge: gitlab
+    project: HomeLabHD/isync
+    roles:
+      - primary
+    worktree: .
+stencils:
+  presets:
+    - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/stencils-base.yml
+    - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/stencils-status.yml
+    - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/stencils-docker.yml
+toolchains:
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/toolchains.yml
+  want:
+    presets:
+      - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/toolchains-scanners.yml
