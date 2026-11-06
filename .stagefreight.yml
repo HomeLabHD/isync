@@ -78,6 +78,11 @@ repos:
     roles:
       - primary
     worktree: .
+schedules:
+  upstream-refresh:
+    build: changes
+    cron: H H * * *
+    reason: Daily watch of Alpine's isync; move to its new release.
 stencils:
   presets:
     - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/stencils-base.yml
@@ -88,3 +93,19 @@ toolchains:
   want:
     presets:
       - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/toolchains-scanners.yml
+upstream:
+  evidence:
+    image:
+      probe:
+        manager: apk
+        package: isync
+  sources:
+    isync:
+      apk: isync
+      pins:
+        - arg: ISYNC_VERSION
+          file: Dockerfile
+      repository: community
+  version:
+    since: v1.5.1
+    track: isync
