@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.22.7
+FROM docker.io/library/alpine:3.22.8
 
 LABEL maintainer="HomeLabHD <homelabhelp@gmail.com>" \
     org.opencontainers.image.title="isync" \
