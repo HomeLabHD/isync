@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.22.8
+FROM docker.io/library/alpine:3.24.3
 
 LABEL maintainer="HomeLabHD <homelabhelp@gmail.com>" \
     org.opencontainers.image.title="isync" \
@@ -9,7 +9,7 @@ LABEL maintainer="HomeLabHD <homelabhelp@gmail.com>" \
     org.opencontainers.image.licenses="GPL-2.0-or-later" \
     org.opencontainers.image.vendor="HomeLabHD"
 
-ARG ISYNC_VERSION=1.5.1-r0
+ARG ISYNC_VERSION=1.5.1-r1
 
 ENV HOME=/var/lib/mbsync
 
