@@ -9,12 +9,11 @@ LABEL maintainer="HomeLabHD <homelabhelp@gmail.com>" \
     org.opencontainers.image.licenses="GPL-2.0-or-later" \
     org.opencontainers.image.vendor="HomeLabHD"
 
-# Upstream isync version; Alpine's own rebuild revisions (-rN) are accepted.
-ARG ISYNC_VERSION=1.5.1
+ARG ISYNC_VERSION=1.5.1-r0
 
 ENV HOME=/var/lib/mbsync
 
-RUN apk add --no-cache "isync~${ISYNC_VERSION}" ca-certificates tini \
+RUN apk add --no-cache "isync=${ISYNC_VERSION}" ca-certificates tini \
  && mbsync --version
 
 # Sync state (mbsync's SyncState files) lives here; writable by any UID through group 0.
