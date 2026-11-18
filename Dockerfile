@@ -9,6 +9,7 @@ LABEL maintainer="HomeLabHD <homelabhelp@gmail.com>" \
     org.opencontainers.image.licenses="GPL-2.0-or-later" \
     org.opencontainers.image.vendor="HomeLabHD"
 
+# renovate: datasource=apk depName=isync registryUrl=https://dl-cdn.alpinelinux.org/alpine/v3.24/community
 ARG ISYNC_VERSION=1.5.1-r1
 
 ENV HOME=/var/lib/mbsync
