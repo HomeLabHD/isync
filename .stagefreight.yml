@@ -91,17 +91,5 @@ toolchains:
     presets:
       - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/toolchains-scanners.yml
 upstream:
-  evidence:
-    image:
-      manager: apk
-      package: isync
-  sources:
-    isync:
-      apk: isync
-      pins:
-        - arg: ISYNC_VERSION
-          file: Dockerfile
-      repository: community
   version:
-    since: v1.5.1
     track: isync
