@@ -93,9 +93,8 @@ toolchains:
 upstream:
   evidence:
     image:
-      probe:
-        manager: apk
-        package: isync
+      manager: apk
+      package: isync
   sources:
     isync:
       apk: isync
